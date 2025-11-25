@@ -1,0 +1,46 @@
+# Server Settings
+port: 8317
+auth-dir: "~/.cli-proxy-api"
+remote-management:
+  allow-remote: true
+  secret-key: "$2a$10$cTRaBO9cgQ.aXr11qHx9aehMIAeXQFXUNW6TFdPSQf.YYXJIo8pbm"
+  disable-control-panel: false
+debug: true
+logging-to-file: true
+proxy-url: ""
+# Request Handling
+request-retry: 3
+quota-exceeded:
+  switch-project: true
+  switch-preview-model: true
+# Usage Tracking
+usage-statistics-enabled: true
+# Cerebras GLM 4.6
+openai-compatibility:
+  - name: "cerebras"
+    base-url: "https://api.cerebras.ai/v1"
+    api-key-entries:
+      - api-key: "YOUR_CEREBRAS_API_KEY" # Get from cerebras.ai/code
+    models:
+      - name: "glm-4.6"
+        alias: "glm-4.6"
+  # Z.AI GLM Coding Plan
+  # Get API key from https://open.bigmodel.cn/api/keys
+  - name: "zai"
+    base-url: "https://api.z.ai/api/anthropic" # Correct endpoint for GLM Coding Plan
+    api-key-entries:
+      - api-key: "63e0189e8180410ca2ee151d2c020e31.Cd0DIl75hBTd9UpM"
+    models:
+      - name: "glm-4.6"
+        alias: "glm-4.6"
+      - name: "glm-4.5-air"
+        alias: "glm-4.5-air"
+  # Baseten Kimi 2 Thinking
+  # Advanced reasoning model from Moonshot AI
+  - name: "baseten"
+    base-url: "https://inference.baseten.co/v1"
+    api-key-entries:
+      - api-key: "93VOXkU2.o2ryHEB8WcFwvW02aIvFGy2K4Jub5ly2"
+    models:
+      - name: "moonshotai/Kimi-K2-Thinking"
+        alias: "kimi-k2-thinking"

@@ -1,0 +1,33 @@
+# OAuth Tokens (CRITICAL - NEVER COMMIT)
+*.json
+auth/
+tokens/
+*-token.json
+.cli-proxy-api/*.json
+
+# Sensitive Configuration
+.env
+*secret*
+*password*
+*credentials*
+
+# Logs
+*.log
+logs/
+
+# Build artifacts
+cli-proxy-api
+*.exe
+dist/
+build/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

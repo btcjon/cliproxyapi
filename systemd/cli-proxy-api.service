@@ -1,0 +1,20 @@
+[Unit]
+Description=CLIProxyAPI - AI API Proxy Service
+After=network.target
+
+[Service]
+Type=simple
+User=dev
+WorkingDirectory=/home/dev
+ExecStart=/usr/local/bin/cli-proxy-api --config /home/dev/.cli-proxy-api/config.yaml
+Restart=always
+RestartSec=10
+StandardOutput=append:/home/dev/.cli-proxy-api/logs/service.log
+StandardError=append:/home/dev/.cli-proxy-api/logs/service-error.log
+
+# Security
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

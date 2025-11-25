@@ -1,0 +1,33 @@
+[Unit]
+Description=ClipProxy Expert Agent - Project-specific Claude consultant
+After=network.target
+Documentation=file:///home/dev/Dropbox/Projects/cliproxy-vps-config/EXPERT-AGENT.md
+
+[Service]
+Type=simple
+User=dev
+Group=dev
+WorkingDirectory=/home/dev/Dropbox/Projects/cliproxy-vps-config
+
+# Start the expert agent server
+ExecStart=/home/dev/.bun/bin/bun expert-agent-server.ts
+
+# Restart on failure
+Restart=always
+RestartSec=10
+
+# Resource limits
+MemoryLimit=512M
+CPUQuota=50%
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=cliproxy-expert
+
+# Security hardening
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
