@@ -190,3 +190,7 @@ Run `./scripts/test-all-models.sh` to test all models or see `docs/API-REFERENCE
 - `.gitignore` excludes sensitive files
 - Service runs with `NoNewPrivileges=true` and `PrivateTmp=true`
 - Remote management secret key is in config (keep secure)
+
+## Dropbox import snapshot
+
+`vps-config-import/` holds unique files folded from `~/Dropbox/Projects/cliproxy-vps-config` (LAUN-44). Differing Dropbox copies live under `vps-config-import/differs/`; live secrets were not imported (see `vps-config-import/IMPORT-MANIFEST.md`).

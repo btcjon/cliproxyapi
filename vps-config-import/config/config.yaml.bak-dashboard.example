@@ -1,0 +1,92 @@
+# Sanitized — placeholders only (REPLACE_ME). Do not commit live keys.
+# Server Settings
+port: 8317
+auth-dir: "~/.cli-proxy-api"
+remote-management:
+  allow-remote: true
+  secret-key: REPLACE_ME  disable-control-panel: false
+debug: false
+logging-to-file: true
+proxy-url: ""
+# Request Handling
+request-retry: 3
+routing:
+  strategy: "fill-first"
+quota-exceeded:
+  switch-project: false
+  switch-preview-model: false
+# Usage Tracking
+usage-statistics-enabled: true
+
+# Z.AI GLM lane via Anthropic-compatible endpoint.
+claude-api-key:
+  - api-key: REPLACE_ME    prefix: "zai"
+    base-url: "https://api.z.ai/api/anthropic"
+    headers:
+      anthropic-version: "2023-06-01"
+    models:
+      - name: "glm-5"
+        alias: "glm-5"
+      - name: "glm-5-turbo"
+        alias: "glm-5-turbo"
+      - name: "glm-5.1"
+        alias: "glm-5.1"
+
+# OpenAI-Compatible Providers
+openai-compatibility:
+  # Baseten Kimi 2 Thinking
+  # Advanced reasoning model from Moonshot AI
+  - name: "baseten"
+    base-url: "https://inference.baseten.co/v1"
+    api-key-entries:
+      - api-key: REPLACE_ME    models:
+      - name: "moonshotai/Kimi-K2-Thinking"
+        alias: "kimi-k2-thinking"
+  # Venice AI via OpenAI-compatible API
+  - name: "venice"
+    prefix: "venice"
+    base-url: "https://api.venice.ai/api/v1"
+    api-key-entries:
+      - api-key: REPLACE_ME    models:
+      - name: "venice-uncensored"
+        alias: "venice-uncensored"
+
+oauth-excluded-models:
+  gemini-cli:
+    - "gemini-2.5-flash"
+  claude:
+    - "claude-opus-4-1-20250805"
+    - "claude-opus-4-20250514"
+    - "claude-sonnet-4-20250514"
+    - "claude-3-7-sonnet-20250219"
+    - "claude-3-5-haiku-20241022"
+    - "claude-opus-4-5-20251101"
+    - "claude-sonnet-4-5-20250929"
+  codex:
+    - "gpt-5"
+    - "gpt-5.1"
+    - "gpt-5.1-codex"
+    - "gpt-5.1-codex-max"
+    - "gpt-5.1-codex-mini"
+    - "gpt-5-codex"
+    - "gpt-5-codex-mini"
+
+oauth-model-alias:
+  claude:
+    - name: "claude-sonnet-4-6"
+      alias: "sonnet"
+      fork: true
+    - name: "claude-opus-4-7"
+      alias: "opus"
+      fork: true
+    - name: "claude-haiku-4-5-20251001"
+      alias: "haiku"
+      fork: true
+  gemini-cli:
+    - name: "gemini-3.1-pro-preview"
+      alias: "gpro"
+      fork: true
+    - name: "gemini-3-flash-preview"
+      alias: "gflash"
+      fork: true
+

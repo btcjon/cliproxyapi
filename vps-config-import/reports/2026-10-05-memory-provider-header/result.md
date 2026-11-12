@@ -1,0 +1,11 @@
+# Grok Build and proxy compatibility repair — October 5, 2026
+
+Both existing Grok Build installations are current at 1.0.46 stable (2765805b9442). Their official updaters returned “Already up to date (1.0.46)”; no replacement was needed.
+
+The distinct CLIProxyAPI7.2.158 runtime pinned an obsolete0.2.120 client header. Only two supported per-auth header overrides were added on dest: x-grok-client-version1.0.46 and User-Agent xai-grok-workspace/1.0.46. Official version-matched source confirms auth metadata becomes custom runtime attributes and is applied last. An independent loopback call through the existing grok-4.20-0309-non-reasoning route returned HTTP200 and OK. The daemon remains active with unchangedPID625443. Immediate and later comparisons confirmed every non-header auth field unchanged; file mode remains0600. Credentials stayed on dest. No restart, binary, provider, model, budget or routing change.
+
+Rollback: merge the prior values of these two keys from the private host-local preimage into the current auth JSON, preserving any later credential refresh. Private preimage: /home/dev/.local/state/cli-proxy-api/20261005-memory-header-repair/auth-preimage.json. Do not overwrite the whole current credential file.
+
+The approved pilot publication is not complete. Its one existing provider operation failed at10:22:35UTC, before the10:31:52UTC header repair. Request global-memory-pilot-20261005-owner-policy-2 retains its consumed approval and canonical memory47aa2d8d-ad20-4367-8beb-7d2f2ef96341. Provider operationfe4822da-422d-4c8f-8f8e-8153ac03ba40 is failed; governed status remains uncertain/provider_outcome_unknown and memory_get unavailable. No publication, retain, approval or queue reset was repeated. Recovery needs supported reconciliation of this exact failed operation, not a new approval or duplicate retain. Full pilot gates remain open. The hourly chat checker remainsPAUSED.
+
+Sources: [version-matched auth synthesis](https://github.com/router-for-me/CLIProxyAPI/blob/v7.2.158/internal/watcher/synthesizer/file.go), [version-matched executor](https://github.com/router-for-me/CLIProxyAPI/blob/v7.2.158/internal/runtime/executor/xai_executor_request.go), [reported upstream compatibility issue](https://github.com/router-for-me/CLIProxyAPI/issues/6249).

@@ -1,0 +1,50 @@
+name: capi
+version: 1
+workflow_archetype: query
+entry_step: resolve_route
+inputs:
+  required:
+    - request
+steps:
+  resolve_route:
+    type: tool_call
+    tool: capi__resolve_route
+    args:
+      request: "{{input.request}}"
+      mode: "{{input.mode}}"
+      action: "{{input.action}}"
+      scope: "{{input.scope}}"
+      path: "{{input.path}}"
+      query: "{{input.query}}"
+      file_path: "{{input.file_path}}"
+      execute: "{{input.execute}}"
+    store:
+      route_summary: "$.route_summary"
+      target_paths: "$.target_paths"
+      cookbook_refs: "$.cookbook_refs"
+      command_templates: "$.command_templates"
+      guidance: "$.guidance"
+      delegated_input: "$.delegated_input"
+    next: finalize
+    on_failure: fail
+
+  finalize:
+    type: emit
+    end: success
+    output:
+      skill: "capi"
+      request: "{{input.request}}"
+      route_summary: "{{state.route_summary}}"
+      target_paths: "{{state.target_paths}}"
+      cookbook_refs: "{{state.cookbook_refs}}"
+      command_templates: "{{state.command_templates}}"
+      guidance: "{{state.guidance}}"
+      delegated_input: "{{state.delegated_input}}"
+
+  fail:
+    type: emit
+    end: failed
+    output:
+      skill: "capi"
+      request: "{{input.request}}"
+      error: "route resolution failed"
