@@ -21,7 +21,7 @@ inventory=freeze_inventory(ROOT/"skill-candidate")
 if inventory["exclusions"]:raise RuntimeError(inventory["exclusions"])
 pre=fidelity_preflight(inventory)
 if pre["failed"]:raise RuntimeError(pre["failed"])
-remote=[{"stable_id":"warehouse:capi","page_id":PAGE,"remote_hash":observed["version"],"last_synced_hash":observed["version"]}]
+remote=[{"stable_id":"warehouse:capi","page_id":PAGE,"remote_hash":t.observe_skill(PAGE)["version"],"last_synced_hash":observed["version"]}]
 plan=plan_sync(inventory,remote,database_id=observed["parent"]["database_id"],data_source_id=observed["parent"]["data_source_id"])
 (ROOT/"skill-inventory.json").write_text(json.dumps(inventory,indent=2)+"\n")
 (ROOT/"skill-plan.json").write_text(json.dumps(plan,indent=2)+"\n")

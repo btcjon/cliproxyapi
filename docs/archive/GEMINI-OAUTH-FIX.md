@@ -40,7 +40,7 @@ https://console.cloud.google.com/apis/credentials/consent
 - User Type: External
 - App name: Gemini CLI Client
 - Add scope: `https://www.googleapis.com/auth/generative-language.retriever`
-- Add test user: jonebennett@gmail.com
+- Add test user: <account-email>
 
 ### 3. Create OAuth Client
 https://console.cloud.google.com/apis/credentials

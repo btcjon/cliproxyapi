@@ -103,9 +103,9 @@ Client Tools → Environment Variables → CLIProxyAPI (port 8317) → OAuth Tok
 
 ## OAuth Token Locations
 
-- Claude: `~/.cli-proxy-api/claude-anthropic@decentral.email.json`
-- Gemini: `~/.cli-proxy-api/jonebennett@gmail.com-gen-lang-client-*.json` (2 projects for load balancing)
-- OpenAI: `~/.cli-proxy-api/codex-jon@jonbennett.co-Plus.json`
+- Claude: `~/.cli-proxy-api/<account-email>`
+- Gemini: `~/.cli-proxy-api/<account-email>-gen-lang-client-*.json` (2 projects for load balancing)
+- OpenAI: `~/.cli-proxy-api/<account-email>`
 
 **Note**: Gemini uses **Code Assist API** which provides access to your **AI Ultra subscription benefits** (120 req/min, 2,000 req/day) through CLIProxyAPI.
 
