@@ -1,0 +1,42 @@
+# Sanitized — placeholders only (REPLACE_ME). Do not commit live keys.
+# Server Settings
+port: 8317
+auth-dir: "~/.cli-proxy-api"
+remote-management:
+  allow-remote: true
+  secret-key: REPLACE_ME  disable-control-panel: false
+debug: true
+logging-to-file: true
+proxy-url: ""
+# Request Handling
+request-retry: 3
+quota-exceeded:
+  switch-project: true
+  switch-preview-model: true
+# Usage Tracking
+usage-statistics-enabled: true
+
+# Z.AI GLM Coding Plan (via Claude API compatibility)
+# Uses Anthropic-style endpoint with custom base-url
+claude-api-key:
+  - api-key: REPLACE_ME    prefix: "zai"
+    base-url: "https://api.z.ai/api/anthropic"
+    headers:
+      anthropic-version: "2023-06-01"
+    models:
+      - name: "glm-4.7"
+        alias: "glm-4.7"
+      - name: "glm-4.5-air"
+        alias: "glm-4.5-air"
+  # Anthropic fallback for native Claude models (prevents OAuth expiry outages)
+  - api-key: REPLACE_ME
+# OpenAI-Compatible Providers
+openai-compatibility:
+  # Baseten Kimi 2 Thinking
+  # Advanced reasoning model from Moonshot AI
+  - name: "baseten"
+    base-url: "https://inference.baseten.co/v1"
+    api-key-entries:
+      - api-key: REPLACE_ME    models:
+      - name: "moonshotai/Kimi-K2-Thinking"
+        alias: "kimi-k2-thinking"
